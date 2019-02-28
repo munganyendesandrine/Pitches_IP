@@ -6,6 +6,16 @@
     {% endfor %}
 
 {% endmacro %}
+
+
+{% macro displayCommentList(form) %}
+
+    {% for comment in form %}
+
+    {{ comment.comment}}
+    {% endfor %}
+
+{% endmacro %}
 <!-- < Displaying reviews macro -->
 <!-- {% macro displayPitch(pitch_list) %}
     {% for pitch in pitch_list %}

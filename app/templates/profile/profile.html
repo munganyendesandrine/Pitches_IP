@@ -1,6 +1,7 @@
   {% extends 'base.html'%}
+  {% import 'macros.html' as macro%}
   {% import 'bootstrap/wtf.html' as wtf %}
-{% block content %}
+  {% block content %}
 
 <div class="container">
 
@@ -20,7 +21,7 @@
     {% if user == current_user %}
       <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
     {% endif %}
-    {{wtf.quick_form(opinion)}} 
+    
   </div>
   <div class="col-md-4">
     {% if user.profile_pic_path %}
@@ -31,6 +32,8 @@
     <p>No profile picture</p>
 
     {% endif %}
+
+   
     <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
 
       <input type="file"  name="photo" class="form-control" required>
@@ -41,5 +44,15 @@
 
 
 </div>
+<p>Your Pitch: <a href="{{url_for('main.profile',uname=user.username)}}">Click here </a></p>
+
+
 </div>
+{%for pitch in pitches%}
+ <p>{{pitch.description}}</p>
+ <p>{{pitch.user}}</p>
+{%endfor%}
+{{wtf.quick_form(opinion)}} 
+
+
 {% endblock %}

@@ -48,9 +48,9 @@ def profile(uname):
     # description=form.description.data
     # form=CommentForm()
     form = CommentForm()
-   
+    pitches=Pitches.fetch_pitches()
     if form.validate_on_submit():
-        comment=Comment(comment=form.comment.data,user_id=current_user.id)#,pitch_id=pitch_id
+        comment=Comment(comment=form.comment.data,user_id=current_user.id,pitch_id=pitch_id)#,pitch_id=pitch_id
         db.session.add(comment)
         db.session.commit()
         comment.save_comment()
@@ -59,7 +59,7 @@ def profile(uname):
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user,opinion=form)
+    return render_template("profile/profile.html", user = user,opinion=form,pitches=pitches)
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -143,6 +143,7 @@ def update_pic(uname):
 #     user = User.query.filter_by(id = posts_id).first()
 
 #     return render_template('posts.html',user = user)
+
 #Pitch routing
 @main.route('/posts',methods = ["GET","POST"])
 @login_required
@@ -155,6 +156,7 @@ def posts():
         db.session.commit()
         posted.save_post()
         return redirect(url_for('.index'))
+        print(posted)
     return render_template('posts.html',posts_form = form)
 
 #Comment routing

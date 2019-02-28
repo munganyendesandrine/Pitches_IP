@@ -70,6 +70,10 @@ class Pitches(db.Model):
     def save_post(self):
         db.session.add(self)
         db.session.commit()
+
+    def fetch_pitches():
+        pitches= Pitches.query.all()
+        return pitches 
         
     def __repr__(self):
         return f'Pitches {self.name}'           
