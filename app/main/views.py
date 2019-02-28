@@ -46,10 +46,16 @@ def profile(uname):
     
     # form=PostsForm(form.description.data)
     # description=form.description.data
-    form=CommentForm()
-
-    
-    
+    # form=CommentForm()
+    form = CommentForm()
+   
+    if form.validate_on_submit():
+        comment=Comment(comment=form.comment.data,user_id=current_user.id)#,pitch_id=pitch_id
+        db.session.add(comment)
+        db.session.commit()
+        comment.save_comment()
+        # return redirect(url_for('.index'))
+  
     if user is None:
         abort(404)
 
@@ -152,15 +158,15 @@ def posts():
     return render_template('posts.html',posts_form = form)
 
 #Comment routing
-@main.route('/comments',methods = ["GET","POST"])
-@login_required
-def comments():
-    comment = CommentForm()
+# @main.route('/comments',methods = ["GET","POST"])
+# @login_required
+# def comments():
+#     form = CommentForm()
    
-    if form.validate_on_submit():
-        comment=Comment(comment=form.comment.data,user_id=current_user.id,pitch_id=current_user.id)
-        db.session.add(comment)
-        db.session.commit()
-        comment.save_comment()
-        # return redirect(url_for('.index'))
-    return render_template('profile.html',opinion = form)    
+#     if form.validate_on_submit():
+#         comment=Comment(comment=form.comment.data,user_id=current_user.id,pitch_id=current_user.id)
+#         db.session.add(comment)
+#         db.session.commit()
+#         comment.save_comment()
+#         # return redirect(url_for('.index'))
+#     return render_template('profile.html',opinion = form)    
