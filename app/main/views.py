@@ -4,7 +4,7 @@ from . import main
 from .forms import ReviewForm,UpdateProfile
 from ..models import Review
 from .forms import PostsForm
-from ..models import User
+from ..models import User,Pitches
 from flask_login import login_required,current_user
 from .. import db, photos
 
@@ -126,17 +126,9 @@ def posts():
     form = PostsForm()
    
     if form.validate_on_submit():
-    #     user = User(email = form.email.data, username = form.username.data,password = form.password.data)
-    #     db.session.add(user)
-    #     db.session.commit()
-    #     mail_message("Welcome to Pitch App","email/welcome_user",user.email,user=user)
-    #     return redirect(url_for('auth.login'))
-          
-          description=form.description.data
-          
-          posted=Pitches(description=description,user_id=current_user.id)
-          posted.save_post()
-    return redirect(url_for('.index'))
-  
-
+        posted=Pitches(description=form.description.data,user_id=current_user.id)#,user_id=current_user.id
+        db.session.add(posted)
+        db.session.commit()
+        posted.save_post()
+        return redirect(url_for('.index'))
     return render_template('posts.html',posts_form = form)

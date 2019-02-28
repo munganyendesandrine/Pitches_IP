@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,TextAreaField,SubmitField
 from wtforms.validators import Required
+from flask_login import current_user
 
 class ReviewForm(FlaskForm):
 
@@ -15,7 +16,7 @@ class UpdateProfile(FlaskForm):
 class PostsForm(FlaskForm):
    
     description = TextAreaField('Your 1 minute Pitch',validators=[Required()])
-    
+   
     submit = SubmitField('Post')       
 
 # class CommentForm(FlaskForm):
