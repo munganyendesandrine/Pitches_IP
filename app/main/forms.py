@@ -19,10 +19,10 @@ class PostsForm(FlaskForm):
    
     submit = SubmitField('Post')       
 
-# class CommentForm(FlaskForm):
+class CommentForm(FlaskForm):
    
-#     opinion = TextAreaField('Your 1 minute Pitch',validators=[Required()])
-#     submit = SubmitField('Post')                  
+    comment = TextAreaField('Please Leave your comment!',validators=[Required()])
+    submit = SubmitField('Submit')                  
 
 # class CategoryForm(FlaskForm):
    

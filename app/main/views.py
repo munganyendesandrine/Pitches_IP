@@ -3,8 +3,8 @@ from . import main
 
 from .forms import ReviewForm,UpdateProfile
 from ..models import Review
-from .forms import PostsForm
-from ..models import User,Pitches
+from .forms import PostsForm,CommentForm
+from ..models import User,Pitches,Comment
 from flask_login import login_required,current_user
 from .. import db, photos
 
@@ -40,14 +40,20 @@ def new_review(id):
     title = f'{movie.title} review'
     return render_template('new_review.html',title = title, review_form=form, movie=movie)
 
-@main.route('/user/<uname>')
+@main.route('/user/<uname>',methods = ["GET","POST"])
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
+    
+    # form=PostsForm(form.description.data)
+    # description=form.description.data
+    form=CommentForm()
 
+    
+    
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user)
+    return render_template("profile/profile.html", user = user,opinion=form)
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -64,7 +70,7 @@ def update_profile(uname):
 
         db.session.add(user)
         db.session.commit()
-
+        
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
@@ -118,17 +124,43 @@ def update_pic(uname):
 #     return render_template('posts.html',posts_form = posts_form,title=title)
 #     # return render_template('new_review.html',title = title, review_form=form, movie=movie)
 
+#Category routing
+# @main.route('/education')
+# def education():
 
+#     '''
+#     Category route
+#     '''
+#     if user is None:
+#         abort(404)
 
+#     user = User.query.filter_by(id = posts_id).first()
+
+#     return render_template('posts.html',user = user)
+#Pitch routing
 @main.route('/posts',methods = ["GET","POST"])
 @login_required
 def posts():
     form = PostsForm()
    
     if form.validate_on_submit():
-        posted=Pitches(description=form.description.data,user_id=current_user.id)#,user_id=current_user.id
+        posted=Pitches(description=form.description.data,user_id=current_user.id)
         db.session.add(posted)
         db.session.commit()
         posted.save_post()
         return redirect(url_for('.index'))
     return render_template('posts.html',posts_form = form)
+
+#Comment routing
+@main.route('/comments',methods = ["GET","POST"])
+@login_required
+def comments():
+    comment = CommentForm()
+   
+    if form.validate_on_submit():
+        comment=Comment(comment=form.comment.data,user_id=current_user.id,pitch_id=current_user.id)
+        db.session.add(comment)
+        db.session.commit()
+        comment.save_comment()
+        # return redirect(url_for('.index'))
+    return render_template('profile.html',opinion = form)    
