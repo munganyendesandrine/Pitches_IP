@@ -36,3 +36,7 @@ You would need the following to access the website:
 https://github.com/munganyendesandrine/Pitches_IP
 
 
+## Contact Information
+
+For more information you may need, contact me at mungasandwingsd@gmail.com
+
