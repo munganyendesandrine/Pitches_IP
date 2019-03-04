@@ -120,28 +120,6 @@ def update_pic(uname):
 
 #     return render_template('posts.html',user = user)
 
-# @main.route('/movie/posts/<int:id>', methods = ['GET','POST'])
-# # @app.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-
-# def posts():
-#     form = PostsForm()
-#     # movie=PostsCategory.query.filter_by(id=id).first()
-#     title = "Posts Area"
-    
-#     # if movie is None:
-#     #     abort(404)
-
-#     # if  posts_form.validate_on_submit():
-#     #     content =  posts_form.content.data
-#     #     # review = posts_form.review.data
-#     #     new_post = PostsForm(content=content)
-#     #     new_post.save_post()
-#     #     return redirect(url_for('.movie',id = movie.id ))
-
-#     # title = f'{movie.title} review'
-#     return render_template('posts.html',posts_form = posts_form,title=title)
-#     # return render_template('new_review.html',title = title, review_form=form, movie=movie)
 
 #Category routing
 # @main.route('/education')
