@@ -31,3 +31,8 @@ You would need the following to access the website:
 *  Internet connectivity (either wireless or ethernet) 
 *  A web browser(Chrome is most recommendable).
 
+## Link to live site on GitHub Pages
+
+https://github.com/munganyendesandrine/Pitches_IP
+
+
