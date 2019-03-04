@@ -59,6 +59,22 @@ def profile(uname):
     if user is None:
         abort(404)
 
+
+#         vote(){
+#     this.quote.up++;
+#     let a=this.quote.up>5;
+   
+#     if(a)
+#     {
+#       alert("Most liked quote")
+     
+#     }
+#   }
+#   voted(){
+#     this.quote.down++;
+#   }
+def upvote():    
+    
     return render_template("profile/profile.html", user = user,opinion=form,pitches=pitches)
 
 

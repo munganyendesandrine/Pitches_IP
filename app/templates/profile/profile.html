@@ -46,11 +46,15 @@
     {%for pitch in pitches%}
  <p>{{pitch.description}}</p>
  <p>{{pitch.user}}</p>
+ <button class="btn btn-success" (click)='vote()'>UP VOTE<i class="up"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn btn-danger" (click)='voted()' >DOWN VOTE<i class="down"></i></button><br><br>
 {%endfor%}
 {{wtf.quick_form(opinion)}} 
 
+<!-- <button (click) = 'quoteComplete(true)'> Delete Quote </button> -->
 
 {% endblock %}
+
   </div>
 
 
