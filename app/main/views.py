@@ -107,20 +107,6 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))    
 
 
-# @main.route('/posts/<int:id>')
-# def posts(posts_id):
-
-#     '''
-#     View posts
-#     '''
-#     if user is None:
-#         abort(404)
-
-#     user = User.query.filter_by(id = posts_id).first()
-
-#     return render_template('posts.html',user = user)
-
-
 #Pitch routing
 @main.route('/posts',methods = ["GET","POST"])
 @login_required
