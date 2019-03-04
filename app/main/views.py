@@ -189,16 +189,4 @@ def education():
 
     return render_template('posts.html',user = user)
 
-#Comment routing
-# @main.route('/comments',methods = ["GET","POST"])
-# @login_required
-# def comments():
-#     form = CommentForm()
-   
-#     if form.validate_on_submit():
-#         comment=Comment(comment=form.comment.data,user_id=current_user.id,pitch_id=current_user.id)
-#         db.session.add(comment)
-#         db.session.commit()
-#         comment.save_comment()
-#         # return redirect(url_for('.index'))
-#     return render_template('profile.html',opinion = form)      
+  
