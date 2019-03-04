@@ -121,20 +121,6 @@ def update_pic(uname):
 #     return render_template('posts.html',user = user)
 
 
-#Category routing
-# @main.route('/education')
-# def education():
-
-#     '''
-#     Category route
-#     '''
-#     if user is None:
-#         abort(404)
-
-#     user = User.query.filter_by(id = posts_id).first()
-
-#     return render_template('posts.html',user = user)
-
 #Pitch routing
 @main.route('/posts',methods = ["GET","POST"])
 @login_required
