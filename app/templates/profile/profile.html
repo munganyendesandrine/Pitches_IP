@@ -39,16 +39,11 @@
       <input type="file"  name="photo" class="form-control" required>
       <input type="submit">
 
-    </form>
-  </div>
+    </form><br><br>
+    <p><strong><i><u>User Pitches</u></i></strong></p>
+    <!-- <a href="{{url_for('main.profile',uname=user.username)}}">Click here </a> -->
 
-
-</div>
-<p>Your Pitch: <a href="{{url_for('main.profile',uname=user.username)}}">Click here </a></p>
-
-
-</div>
-{%for pitch in pitches%}
+    {%for pitch in pitches%}
  <p>{{pitch.description}}</p>
  <p>{{pitch.user}}</p>
 {%endfor%}
@@ -56,3 +51,11 @@
 
 
 {% endblock %}
+  </div>
+
+
+</div>
+
+
+
+</div>

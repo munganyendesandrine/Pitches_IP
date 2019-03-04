@@ -50,7 +50,7 @@ def profile(uname):
     form = CommentForm()
     pitches=Pitches.fetch_pitches()
     if form.validate_on_submit():
-        comment=Comment(comment=form.comment.data,user_id=current_user.id,pitch_id=pitch_id)#,pitch_id=pitch_id
+        comment=Comment(comment=form.comment.data,user_id=current_user.id)#,pitch_id=pitch_id
         db.session.add(comment)
         db.session.commit()
         comment.save_comment()
