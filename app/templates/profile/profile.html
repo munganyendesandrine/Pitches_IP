@@ -41,13 +41,17 @@
 
     </form><br><br>
     <p><strong><i><u>User Pitches</u></i></strong></p>
+    
     <!-- <a href="{{url_for('main.profile',uname=user.username)}}">Click here </a> -->
 
     {%for pitch in pitches%}
+    <!-- <p><strong><i><u>Category:{{pitch.user}}</u></i></strong></p> -->
  <p>{{pitch.description}}</p>
  <p>{{pitch.user}}</p>
+ <!-- <p><strong><u>Pitch posted at:</u></strong><br>{{pitch.publishedAt}}</p> -->
  <button class="btn btn-success" (click)='vote()'>UP VOTE<i class="up"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <button class="btn btn-danger" (click)='voted()' >DOWN VOTE<i class="down"></i></button><br><br>
+
 {%endfor%}
 {{wtf.quick_form(opinion)}} 
 

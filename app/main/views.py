@@ -44,9 +44,6 @@ def new_review(id):
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
     
-    # form=PostsForm(form.description.data)
-    # description=form.description.data
-    # form=CommentForm()
     form = CommentForm()
     pitches=Pitches.fetch_pitches()
     if form.validate_on_submit():
@@ -59,7 +56,7 @@ def profile(uname):
     if user is None:
         abort(404)
 
-
+# def upvote(): 
 #         vote(){
 #     this.quote.up++;
 #     let a=this.quote.up>5;
@@ -73,8 +70,8 @@ def profile(uname):
 #   voted(){
 #     this.quote.down++;
 #   }
-def upvote():    
-    
+   
+ 
     return render_template("profile/profile.html", user = user,opinion=form,pitches=pitches)
 
 
@@ -175,6 +172,23 @@ def posts():
         print(posted)
     return render_template('posts.html',posts_form = form)
 
+  
+
+#Categories
+@main.route('/category',methods = ["GET","POST"])
+@login_required
+def education():
+
+    '''
+    Category route
+    '''
+    if user is None:
+        abort(404)
+
+    user = User.query.filter_by(id = posts_id).first()
+
+    return render_template('posts.html',user = user)
+
 #Comment routing
 # @main.route('/comments',methods = ["GET","POST"])
 # @login_required
@@ -187,4 +201,4 @@ def posts():
 #         db.session.commit()
 #         comment.save_comment()
 #         # return redirect(url_for('.index'))
-#     return render_template('profile.html',opinion = form)    
+#     return render_template('profile.html',opinion = form)      
